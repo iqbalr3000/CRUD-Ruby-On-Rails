@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<% if flash[:notice].present? %>
+<%= flash[:notice] %>
+<% end %> </br>
+
+<div class="container">
+<table class="table">
+    <tr>
+        <td> Nama</td>
+        <td> Username</td>
+        <td> Age</td>
+        <td> Rombel</td>
+        <td> Address</td>
+        <td> City</td>
+        <td> Nik</td>
+        <td colspan="5"> Action</td>
+    </tr>
+    <% @students.each do |student|%>
+    <tr>
+        <td><%= student.name %> </td>
+        <td><%= student.username %> </td>
+        <td><%= student.age %> </td>
+        <td><%= student.rombel %> </td>
+        <td><%= student.address %> </td>
+        <td><%= student.city %> </td>
+        <td><%= student.nik %> </td>
+        <td>
+            <div class="pull-right">
+        <%= link_to 'Detail', student_path(student), class: "btn btn-info"%> 
+        <%= link_to 'Edit', edit_student_path(student), class: "btn btn-warning"%> 
+        <%= link_to 'Delete',  student_path(student), method: :delete, data: {confirm: 'Are you sure?'} ,class: "btn btn-danger"%>
+    </div>
+    </td>
+    </tr>
+<% end %>
+</table>
+<%= link_to 'New Student', new_student_path  ,class: "btn btn-primary"%> 
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
